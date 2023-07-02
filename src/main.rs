@@ -16,6 +16,17 @@ impl Rectangle {
     }
 }
 
+impl Rectangle {
+    // Associated functions that aren’t methods are often used for constructors
+    // that will return a new instance of the struct
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
+}
+
 fn main() {
     let rect1 = Rectangle {
         width: 30,
@@ -32,8 +43,12 @@ fn main() {
         height: 65,
     };
 
+    let square1 = Rectangle::square(3);
+
     print!("Can rect1 hold rect2 -> {}", rect1.can_hold(&rect2));
     print!("Can rect1 hold rect3 -> {}", rect1.can_hold(&rect3));
+
+    print!("Is square with size 3 -> {:#?}", square1);
 
     dbg!(&rect1);
 
